@@ -1,23 +1,23 @@
 const calculator={
     add: function(a, b){
-        alert(a+b)
+        return a+b
     },
     sub: function(a, b){
-        alert(a-b)
+        return a-b
     },
     mul: function(a, b){
-        alert(a*b)
+        return a*b
     },
     div: function(a, b){
-        alert(a/b)
+        return a/b
     },
     powerof: function(a,b){
-        alert(a ** b)
+        return a ** b
     }
 }
 
-calculator.add(1,2)
-calculator.sub(1,2)
-calculator.mul(3,2)
-calculator.div(1,2)
-calculator.powerof(3,2)
+const plusResult=calculator.add(1,2)
+const minusResult=calculator.sub(1,2)
+const multiplicationResult=calculator.mul(3,2)
+const divisionResult=calculator.div(1,2)
+const powerResult=calculator.powerof(3,2)
