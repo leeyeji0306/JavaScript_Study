@@ -9,11 +9,7 @@ const calculator={
         console.log(a/b)
     },
     powerof: function(a,b){
-        let power=1
-        for(let i = 0; i<b; i++){
-            power*=a
-        }
-        console.log(power)
+        console.log(a ** b)
     }
 }
 
