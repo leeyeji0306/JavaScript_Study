@@ -13,12 +13,15 @@ function saveToDos(){
 function deleteToDo(event){
     const li=event.target.parentElement
     li.remove()
+    toDos=toDos.filter((toDo) => toDo.id !== parseInt(li.id))
+    saveToDos()
 }
 
 function paintToDO(newToDo){
     const toDoListItem=document.createElement("li")
     const span=document.createElement("span")
     span.innerText=newToDo.text
+    toDoListItem.id = newToDo.id
     const button = document.createElement("button")
     button.innerText="❌"
     toDoListItem.appendChild(span)
