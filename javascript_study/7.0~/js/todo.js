@@ -4,7 +4,7 @@ const toDoList=document.querySelector("#todo-list")
 
 const TODOS_KEY="todos"
 
-const toDos = []
+let toDos = []
 
 function saveToDos(){
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos))
@@ -18,7 +18,7 @@ function deleteToDo(event){
 function paintToDO(newToDo){
     const toDoListItem=document.createElement("li")
     const span=document.createElement("span")
-    span.innerText=newToDo
+    span.innerText=newToDo.text
     const button = document.createElement("button")
     button.innerText="❌"
     toDoListItem.appendChild(span)
@@ -31,19 +31,20 @@ function handleTodoSubmit(event){
     event.preventDefault()
     const newToDo=toDoInput.value
     toDoInput.value="";
-    toDos.push(newToDo)
-    paintToDO(newToDo)
+    const newToDoObj={
+        text:newToDo,
+        id: Date.now()
+    }
+    toDos.push(newToDoObj)
+    paintToDO(newToDoObj)
     saveToDos()
 }
 
 toDoForm.addEventListener("submit", handleTodoSubmit)
 
-function sayHello(item){
-    console.log("this is the turn of", item)
-}
-
 const savedToDos=localStorage.getItem(TODOS_KEY)
 if(savedToDos !== null){
     const parsedToDos=JSON.parse(savedToDos)
-    parsedToDos.forEach(sayHello)
+    toDos=parsedToDos
+    parsedToDos.forEach(paintToDO)
 }
